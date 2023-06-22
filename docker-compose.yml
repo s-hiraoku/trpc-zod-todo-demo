@@ -1,0 +1,17 @@
+version: "3.8" # 使用するDocker Composeのバージョンを指定します。
+
+services:
+  dev-postgres:
+    image: postgres:14.4-alpine # PostgreSQLのバージョン14.4を基にしたAlpine Linuxイメージを使用します。
+    ports:
+      - 5434:5432 # ホストマシンの5434ポートとコンテナの5432ポートを紐づけます。これにより、ホストマシンから5434ポートを介してPostgreSQLにアクセスできます。
+    environment:
+      POSTGRES_USER: trpc # PostgreSQLのユーザー名を指定します。
+      POSTGRES_PASSWORD: trpc # PostgreSQLのパスワードを指定します。
+      POSTGRES_DB: trpc # PostgreSQLのデータベース名を指定します。
+    restart: always # コンテナが停止したときに常に再起動します。これにより、エラーやサーバーの再起動後でも自動的にコンテナが起動します。
+    networks:
+      - lesson # このサービスを'lesson'という名前のネットワークに接続します。
+
+networks:
+  lesson: # 'lesson'という名前のネットワークを作成します。上記のサービスがこのネットワークに接続します。
