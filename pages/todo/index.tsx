@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { ChangeEvent, useState } from "react";
 import { Todo } from "../../server/types/todo";
 import { trpc } from "../../utils/trpc";
 import Link from "next/link";
