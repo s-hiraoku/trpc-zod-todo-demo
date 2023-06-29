@@ -83,23 +83,27 @@ export default function Page() {
           <p>新規作成</p>
           <div className={styles.inputField}>
             <label>タイトル</label>
-            <input
-              type="text"
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                setTitle(e.target.value);
-              }}
-              value={title}
-            />
+            <div>
+              <input
+                type="text"
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setTitle(e.target.value);
+                }}
+                value={title}
+              />
+            </div>
           </div>
           <div className={styles.inputField}>
             <label>本文</label>
-            <input
-              type="text"
-              onChange={(e: ChangeEvent<HTMLInputElement>) => {
-                setBody(e.target.value);
-              }}
-              value={body}
-            />
+            <div>
+              <input
+                type="text"
+                onChange={(e: ChangeEvent<HTMLInputElement>) => {
+                  setBody(e.target.value);
+                }}
+                value={body}
+              />
+            </div>
           </div>
           <button className={styles.button} onClick={handleCreateTodo}>
             登録
