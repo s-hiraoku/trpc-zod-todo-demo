@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { Todo } from "../../server/types/todo";
 import { trpc } from "../../utils/trpc";
 import Link from "next/link";
+import styles from "./index.module.css";
 
 export default function Page() {
   // getTodosエンドポイントからデータを取得
@@ -59,15 +60,16 @@ export default function Page() {
 
   return (
     <>
-      <h1>Todo list</h1>
+      <h1 className={styles.title}>Todo list</h1>
       <div>
-        <ul>
+        <ul className={styles.list}>
           {data.map((todo: Todo) => (
             <div key={todo.id}>
               <Link href={`todo/${todo.id}`}>
-                <li>{todo.title}</li>
+                <li className={styles.listItem}>{todo.title}</li>
               </Link>
               <button
+                className={styles.button}
                 onClick={() => {
                   handleDeleteTodo(todo.id);
                 }}
@@ -77,9 +79,9 @@ export default function Page() {
             </div>
           ))}
         </ul>
-        <div className="create-form">
+        <div className={styles.createForm}>
           <p>新規作成</p>
-          <div className="title">
+          <div className={styles.inputField}>
             <label>タイトル</label>
             <input
               type="text"
@@ -89,7 +91,7 @@ export default function Page() {
               value={title}
             />
           </div>
-          <div className="body">
+          <div className={styles.inputField}>
             <label>本文</label>
             <input
               type="text"
@@ -99,7 +101,9 @@ export default function Page() {
               value={body}
             />
           </div>
-          <button onClick={handleCreateTodo}>登録</button>
+          <button className={styles.button} onClick={handleCreateTodo}>
+            登録
+          </button>
         </div>
       </div>
     </>
